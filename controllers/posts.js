@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 	Post.find({})
 		.then((posts) => {
 			res.render('index', {
-				posts
+				posts,
 			});
 		})
 		.catch(console.error);
@@ -16,31 +16,43 @@ router.get('/', (req, res) => {
 //new route
 router.get('/new', (req, res) => {
 	res.render('new');
-})
+});
 
 //edit route
 router.get('/:id/edit', (req, res) => {
 	const id = req.params.id;
 	Post.findById(id)
-		.then(post => {
+		.then((post) => {
 			res.render('edit', post);
 		})
 		.catch(console.error);
 });
+
 //put route
 router.put('/:id', (req, res) => {
-	Post.findOneAndUpdate({
-			_id: req.params.id
-		}, req.body, {
-			new: true
-		})
+	Post.findOneAndUpdate(
+		{
+			_id: req.params.id,
+		},
+		req.body,
+		{
+			new: true,
+		}
+	)
 		.then((post) => {
 			res.redirect('/posts');
 		})
+
 		.catch(console.error);
 });
 
+// delete route
 
+router.delete('/:id', (req, res) => {
+	Post.findOneAndRemove({ _id: req.params.id }).then(() => {
+		res.redirect('/posts');
+	});
+});
 
 //show
 router.get('/:id', (req, res) => {
@@ -53,13 +65,10 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 	Post.create(req.body)
-	  .then(post => {
-		res.redirect('/posts');
-	  })
-	  .catch(console.error);
-  });
-
-
-
+		.then((post) => {
+			res.redirect('/posts');
+		})
+		.catch(console.error);
+});
 
 module.exports = router;
