@@ -1,0 +1,8 @@
+<h1>{{title}}</h1>
+<a href="/posts/{{this._id}}/edit">Edit Post</a>
+<h3>By: {{author}}</h3>
+<h3>Date: {{date}}</h3>
+<p>{{post}}</p>
+<form action="/posts/{{_id}}?_method=delete" method="post">
+    <input type="submit" value="Delete Post">
+</form>
