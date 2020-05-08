@@ -1,0 +1,36 @@
+body {
+	background-color: #0c0c0e;
+}
+
+h1 {
+	color: whitesmoke;
+	text-align: center;
+}
+
+a {
+	color: whitesmoke;
+	text-decoration: none;
+	display: block;
+	margin: 0;
+	text-align: center;
+	text-transform: uppercase;
+	border: 2px solid #ffffff;
+	border-radius: 12px;
+	padding: 4px;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+li {
+	color: whitesmoke;
+	list-style: none;
+}
+
+p {
+	color: whitesmoke;
+}
+h3 {
+	color: whitesmoke;
+}
